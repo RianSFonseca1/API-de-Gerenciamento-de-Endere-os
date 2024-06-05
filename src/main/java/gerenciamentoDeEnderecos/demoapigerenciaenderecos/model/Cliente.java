@@ -3,23 +3,24 @@ package gerenciamentoDeEnderecos.demoapigerenciaenderecos.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Cliente {
 
-    private String nomeCliente;
     @Id
+    /*Falta criar regras de negócio para tratamento do cpfCnpj (id da Entidade Cliente)*/
     private Long cpfCnpj;
+
+    private String nomeCliente;
     private String tipoPessoa;
     private String flagCadastro;
     private String cep;
-    // private Endereco endereco;
+    private Long enderecoId;
 
 }
