@@ -1,7 +1,14 @@
 package gerenciamentoDeEnderecos.demoapigerenciaenderecos.model;
 
+import java.util.Objects;
+import org.hibernate.validator.constraints.br.CPF;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +20,19 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
 
+    /*Falta criar regras de negócio para tratamento do cpf (id da Entidade Cliente)*/
     @Id
-    /*Falta criar regras de negócio para tratamento do cpfCnpj (id da Entidade Cliente)*/
-    private Long cpfCnpj;
+    @CPF
+    private String cpf;
 
+    @NotBlank
     private String nomeCliente;
+    @NotBlank
     private String tipoPessoa;
-    private String flagCadastro;
+    @NotBlank
     private String cep;
+
+    private String flagCadastro;
     private Long enderecoId;
 
 }

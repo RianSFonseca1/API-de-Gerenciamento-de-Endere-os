@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ClienteDto {
 
-    private Long cpfCnpj;
+    private String cpf;
     private String nomeCliente;
     private String tipoPessoa;
     private String flagCadastro;
@@ -18,7 +18,7 @@ public class ClienteDto {
 
     // Construtor
     public ClienteDto(Cliente cliente, Endereco endereco) {
-        this.cpfCnpj = cliente.getCpfCnpj();
+        this.cpf = cliente.getCpf();
         this.nomeCliente = cliente.getNomeCliente();
         this.tipoPessoa = cliente.getTipoPessoa();
         this.flagCadastro = cliente.getFlagCadastro();

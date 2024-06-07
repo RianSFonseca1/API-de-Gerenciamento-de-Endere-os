@@ -1,6 +1,7 @@
 package gerenciamentoDeEnderecos.demoapigerenciaenderecos.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +13,7 @@ import gerenciamentoDeEnderecos.demoapigerenciaenderecos.model.ClienteDto;
 import gerenciamentoDeEnderecos.demoapigerenciaenderecos.model.Endereco;
 import gerenciamentoDeEnderecos.demoapigerenciaenderecos.service.ClienteServiceImpl;
 import gerenciamentoDeEnderecos.demoapigerenciaenderecos.service.ConsultaServiceImpl;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/clientes")
@@ -31,14 +33,13 @@ public class ClienteController {
     }
 
     @PostMapping("/cadastrarCliente")
-    public Cliente adicionarCliente(@RequestBody Cliente cliente) {
-        System.out.println("Requisição Chegou 1"+ cliente.getCep());
+    public ResponseEntity adicionarCliente(@RequestBody @Valid Cliente cliente) {
         return clienteServiceImpl.adicionarCliente(cliente);
     }
 
-    @GetMapping("/buscaCliente/{cpfCnpj}")
-    public ClienteDto buscaCliente(@PathVariable("cpfCnpj") Long cpfCnpj) {
-        return clienteServiceImpl.buscaCliente(cpfCnpj);
+    @GetMapping("/buscaCliente/{cpf}")
+    public ClienteDto buscaCliente(@PathVariable("cpf") String cpf) {
+        return clienteServiceImpl.buscaCliente(cpf);
     }
 
 }
